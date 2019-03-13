@@ -1,3 +1,6 @@
+module nema11(){
+
+}
 
 nema11();
 
@@ -12,6 +15,11 @@ nema11();
         cylinder(h=20, r=3, $fn=30);
         
     }
+    difference(){
+        cylinder(h=5, r=2, $fn=6);
+       
+    }
 }
-
+for(i=[0: 2: 99])
+    translate([15 , 0, 0])nema11(5, 6, 2);
 
