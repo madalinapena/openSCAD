@@ -29,12 +29,19 @@ module roata_dintata()
 {
     union()
     {
+        
         color("red")cylinder (h=1, r=10, $fn=30);
         color("white")cylinder (h=5, r=8, $fn=30);
         color("red")cylinder (h=1, r=10, $fn=30);
     }
 }
-
+module cerc()
+{
+    union()
+    {
+        color("red")cylinder (h=1, r=10, $fn=30);
+    }
+}
 
 module IR()
 {
@@ -45,6 +52,8 @@ module IR()
 }
 
 
+
 translate([25, 0, 28])piesa_plastic();
 translate([0, 0, 38])roata_dintata();
 translate([53, 0, 30])IR();
+translate([0, 0, 43])cerc();
