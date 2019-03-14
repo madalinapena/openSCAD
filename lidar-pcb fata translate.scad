@@ -1,3 +1,4 @@
+translate([15, 0, 70])
 import("TR1_spider.stl");
 
 module nema11()
@@ -10,7 +11,7 @@ module nema11()
         translate([0, 0, 28])
         color("yellow")cylinder (h=2, r=10, $fn=30);
         translate([0, 0, 20])
-        cylinder(h=30, r=3, $fn=30);
+        cylinder(h=30, r=2, $fn=30);
         
     }
 }
@@ -49,16 +50,30 @@ module slip_ring()
 {
     union()
     {
-    translate ([38, 0, 20])
+    translate ([30, 0, 20])
     cylinder(h=8, r=5, $fn=30);
-     translate([38, 0, 30])   
-    cylinder(h=2, r=10, $fn=30);
-        translate([38, 0, 30])
+     translate([30, 0, 30])   
+    cylinder(h=1, r=13, $fn=30);
+        translate([30, 0, 30])
     cylinder (h=10, r=2, $fn=30);  
     }
 }    
 
 slip_ring();
+
+module roata_dintata2()
+{
+    union()
+    {
+        translate([30, 0, 43])
+        color("red")cylinder (h=1, r=10, $fn=30);
+        translate([30, 0, 38])
+        color("white")cylinder (h=5, r=8, $fn=30);
+        translate([30, 0, 38])
+        color("red")cylinder (h=1, r=10, $fn=30);
+    }
+}
+roata_dintata2();
 
 translate([25, 0, 28])piesa_plastic();
 translate([53, 0, 30])IR();
