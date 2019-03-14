@@ -5,9 +5,13 @@ module nema11()
   
     union()
     {
+        translate([-14, -14, 0])
         color("gray")cube([28, 28, 28]);
-       color("yellow")cylinder (h=2, r=10, $fn=30);
-       cylinder(h=30, r=3, $fn=30);
+        translate([0, 0, 28])
+        color("yellow")cylinder (h=2, r=10, $fn=30);
+        translate([0, 0, 20])
+        cylinder(h=30, r=3, $fn=30);
+        
     }
 }
 nema11();
