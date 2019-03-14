@@ -23,7 +23,7 @@ module piesa_plastic()
          color("white") cube([65,28,3],true);
     }
 }
-piesa_plastic();
+
 
 module roata_dintata()
 {
@@ -34,7 +34,7 @@ module roata_dintata()
         color("red")cylinder (h=1, r=10, $fn=30);
     }
 }
-roata_dintata();
+
 
 module IR()
 {
@@ -43,5 +43,8 @@ module IR()
     cube([8,15,8],true);
     }
 }
-IR();
 
+
+translate([25, 0, 28])piesa_plastic();
+translate([0, 0, 38])roata_dintata();
+translate([53, 0, 30])IR();
