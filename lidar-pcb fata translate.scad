@@ -18,10 +18,9 @@ nema11();
         
 module piesa_plastic()
 {
-    union()
-    {
+    
          color("white") cube([65,28,3],true);
-    }
+    
 }
 
 
@@ -37,19 +36,26 @@ module roata_dintata()
 }
 module cerc()
 {
-    union()
-    {
+    
         color("red")cylinder (h=1, r=10, $fn=30);
-    }
+    
 }
 
 module IR()
 {
+    
+    cube([8,15,8],true);
+    
+}
+
+module slip_ring()
+{
     union()
     {
-    cube([8,15,8],true);
+    cylinder(h=8, r=5, $fn=30);   
+    cylinder(h=2, r=10, $fn=30);    
     }
-}
+}    
 
 
 
@@ -57,3 +63,4 @@ translate([25, 0, 28])piesa_plastic();
 translate([0, 0, 38])roata_dintata();
 translate([53, 0, 30])IR();
 translate([0, 0, 43])cerc();
+translate ([38, 0, 20])slip_ring();
