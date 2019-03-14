@@ -28,18 +28,15 @@ module roata_dintata()
 {
     union()
     {
-        
+        translate([0, 0, 43])
         color("red")cylinder (h=1, r=10, $fn=30);
+        translate([0, 0, 38])
         color("white")cylinder (h=5, r=8, $fn=30);
+        translate([0, 0, 38])
         color("red")cylinder (h=1, r=10, $fn=30);
     }
 }
-module cerc()
-{
-    
-        color("red")cylinder (h=1, r=10, $fn=30);
-    
-}
+roata_dintata();
 
 module IR()
 {
@@ -52,15 +49,16 @@ module slip_ring()
 {
     union()
     {
-    cylinder(h=8, r=5, $fn=30);   
-    cylinder(h=2, r=10, $fn=30);    
+    translate ([38, 0, 20])
+    cylinder(h=8, r=5, $fn=30);
+     translate([38, 0, 30])   
+    cylinder(h=2, r=10, $fn=30);
+        translate([38, 0, 30])
+    cylinder (h=10, r=2, $fn=30);  
     }
 }    
 
-
+slip_ring();
 
 translate([25, 0, 28])piesa_plastic();
-translate([0, 0, 38])roata_dintata();
 translate([53, 0, 30])IR();
-translate([0, 0, 43])cerc();
-translate ([38, 0, 20])slip_ring();
