@@ -20,7 +20,7 @@ nema11();
 module piesa_plastic()
 {
     
-         color("white") cube([75,28,3],true);
+         color("white") cube([80,28,3],true);
     
 }
 
@@ -41,11 +41,23 @@ roata_dintata();
 
 module IR()
 {
-    
-    cube([8,15,8],true);
-    
+    union()
+    {
+    translate([70, 0, 30])
+    color("green")cube([10,21,1],true);
+    translate([70, 0, 32])
+    color("black")cube([7,15,7],true);
+    translate([70, -9, 30])
+    color("white")cylinder(h=1, r=1, $fn=30);
+    translate([70, 9, 30])
+    color("white")cylinder(h=1, r=1, $fn=30);
+    translate([70, -3, 35])
+    color("gray")sphere(2, $fn=100); 
+    translate([70, 3, 35])
+    color("gray")sphere(2, $fn=100);
+    }
 }
-
+IR();
 module slip_ring()
 {
     union()
@@ -84,6 +96,7 @@ module piesa_plastic2()
 
 
 
+    
+
 translate([35, 0, 28])piesa_plastic();
-translate([68, 0, 30])IR();
 translate([40, 5, 65])rotate ([90, 0, 0])piesa_plastic2();
