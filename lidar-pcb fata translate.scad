@@ -6,12 +6,17 @@ module nema11()
   
     union()
     {
+        $fn=10;
+minkowski()
+{
         translate([-14, -14, 0])
-        color("gray")cube([28, 28, 28]);
+        color("gray")cube([28.2, 28.2, 31.5]);
+        cylinder(r=2,h=1);
+}
         translate([0, 0, 28])
-        color("yellow")cylinder (h=2, r=10, $fn=30);
+        color("yellow")cylinder (h=2, r=22, $fn=30);
         translate([0, 0, 20])
-        cylinder(h=30, r=2, $fn=30);
+        cylinder(h=20, r=5, $fn=30);
         
     }
 }
@@ -20,7 +25,7 @@ nema11();
 module piesa_plastic()
 {
     
-         color("white") cube([80,28,3],true);
+         color("fuchsia") cube([80,32,1],true);
     
 }
 
@@ -98,5 +103,5 @@ module piesa_plastic2()
 
     
 
-translate([35, 0, 28])piesa_plastic();
+translate([35, 0, 29])piesa_plastic();
 translate([40, 5, 65])rotate ([90, 0, 0])piesa_plastic2();
