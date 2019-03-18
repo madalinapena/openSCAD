@@ -119,19 +119,19 @@ module extensie_IR()
 {
     union()
     {
-        cube([15, 15, 15], true);
-        translate([80, 10, 90])rotate([90, 0, 0])
-         cube([18,28,8],true);
+    
+        cube([15, 10, 15], true);  
+        translate([-7, -5, 0])rotate([90, 0, 0])cube([29, 15, 3],true);
     }
+        
 }     
 //---------------------------------------------------     
 nema11();
 translate ([45, 0, 16]) slip_ring();
 translate ([71.5, 0, 34]) IR();
-translate([0, -47/2, inalv                 time_nema11]) piesa_plastic();
+translate([0, -47/2, inaltime_nema11]) piesa_plastic();
 translate([0, 0, 35])roata_dintata();
 translate([45, 0, 35])roata_dintata2();
 translate([45, 5, 75])rotate ([90, 0, 0])piesa_plastic2();
- translate([80, 10, 90]extensie_IR();
-//---------------------------------------------------
+translate([85, 9, 97])extensie_IR();
 
