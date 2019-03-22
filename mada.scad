@@ -1,13 +1,13 @@
-translate([30, 10, 83])
+translate([25, 10, 83])
 import("TR1_spider.stl");
-
+latime_nema11=28.2;
 inaltime_nema11=31.5;
 module nema11()
 {
     difference() {
     // body
      translate([-14.1, -14.1, 0])
-            color("gray") cube([28.2, 28.2, inaltime_nema11]);
+            color("gray") cube([latime_nema11, 28.2, inaltime_nema11]);
     // holes
             translate([23 / 2, 23 / 2, inaltime_nema11 - 2]) cylinder (h = 4, r=1.25, center = true, $fn=100);
             translate([23 / 2, -23 / 2, inaltime_nema11 - 2]) cylinder (h = 4, r=1.25, center = true, $fn=100);
@@ -19,33 +19,35 @@ module nema11()
     translate([0, 0, inaltime_nema11]) cylinder(h = 20, r = 2.5, $fn = 30);
 }
 //---------------------------------------------------
+lungime_piesa_plastic=76;
+latime_piesa_plastic=47;
 module piesa_plastic()
 {
     difference(){
         color("fuchsia") 
         union () {
-            cube([76, 47, 2]);
+            cube([lungime_piesa_plastic, latime_piesa_plastic, 2]);
         // margins
-            translate ([0, 0, -4]) cube([76, 2, 4]);
-            translate ([0, 45, -4]) cube([76, 2, 4]);
+            translate ([0, 0, -4]) cube([lungime_piesa_plastic, 2, 4]);
+            translate ([0, 45, -4]) cube([lungime_piesa_plastic, 2, 4]);
         }
         // motor screw holes
-        translate([11.5, 47/2 - 11.5, -1]) cylinder (h = 4, r = 1.25, $fn=10);
-        translate([11.5, 47/2 + 11.5, -1]) cylinder (h = 4, r = 1.25, $fn=10);
+        translate([11.5, latime_piesa_plastic/2 - 11.5, -1]) cylinder (h = 4, r = 1.25, $fn=10);
+        translate([11.5, latime_piesa_plastic/2 + 11.5, -1]) cylinder (h = 4, r = 1.25, $fn=10);
         
         // motor hole
-        translate([0, 47/2, -1]) cylinder (h = 4, r = 11, $fn=100);
+        translate([0, latime_piesa_plastic/2, -1]) cylinder (h = 4, r = 11, $fn=100);
         // slip ring screw holes
-            translate ([21 + 2 + 22, 47/2, -1] + [17.5 * sin(30), 17.5 * cos(30), 0]) cylinder (h = 4, r = 2.75);
-            translate ([21 + 2 + 22, 47/2, -1] + [17.5 * sin(150), 17.5 * cos(150), 0]) cylinder (h = 4, r = 2.75);
-            translate ([21 + 2 + 22, 47/2, -1] + [17.5 * sin(270), 17.5 * cos(270), 0]) cylinder (h = 4, r = 2.75);
+            translate ([21 + 2 + 22, latime_piesa_plastic/2, -1] + [17.5 * sin(30), 17.5 * cos(30), 0]) cylinder (h = 4, r = 2.75);
+            translate ([21 + 2 + 22, latime_piesa_plastic/2, -1] + [17.5 * sin(150), 17.5 * cos(150), 0]) cylinder (h = 4, r = 2.75);
+            translate ([21 + 2 + 22, latime_piesa_plastic/2, -1] + [17.5 * sin(270), 17.5 * cos(270), 0]) cylinder (h = 4, r = 2.75);
 
         // slip ring hole
-        translate ([21 + 2 + 22, 47/2, -1]) cylinder (h = 4, r = 11);
+        translate ([21 + 2 + 22, latime_piesa_plastic/2, -1]) cylinder (h = 4, r = 11);
         // IR hole
-        translate([73 - 4.5, 47/2 - 6, 0]) cube ([9, 22 - 5, 5]);
+        translate([73 - 4.5, latime_piesa_plastic/2 - 6, 0]) cube ([9, 22 - 5, 5]);
         // ir screw hole
-        translate([72, 47/2 -9, -1]) cylinder (h = 4, r = 1.25, $fn = 10);
+        translate([72, latime_piesa_plastic/2 -9, -1]) cylinder (h = 4, r = 1.25, $fn = 10);
     }
 }
 //---------------------------------------------------
@@ -115,17 +117,7 @@ module piesa_plastic2()
     color("white") cube([50.1,58.3,3],true);
 }
 //---------------------------------------------------
-module extensie_IR()
-{
-    union()
-    {
-    
-        cube([15, 10, 15], true);  
-        translate([-7, -5, 0])rotate([90, 0, 0])cube([29, 15, 3],true);
-    }
-        
-}     
-//---------------------------------------------------     
+
 nema11();
 translate ([45, 0, 16]) slip_ring();
 translate ([71.5, 0, 34]) IR();
@@ -133,5 +125,5 @@ translate([0, -47/2, inaltime_nema11]) piesa_plastic();
 translate([0, 0, 35])roata_dintata();
 translate([45, 0, 35])roata_dintata2();
 translate([45, 5, 75])rotate ([90, 0, 0])piesa_plastic2();
-translate([85, 9, 97])extensie_IR();
+//---------------------------------------------------
 
