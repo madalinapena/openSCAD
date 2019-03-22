@@ -1,7 +1,20 @@
 translate([25, 10, 83])
 import("TR1_spider.stl");
+raza_motor_hole=11;
+inaltime_mijloc_roata_dintara=7.2;
+raza_mijloc_roata_dintata=11.65;
+raza_roata_dintata=12.75;
+inaltime_roata_dintata=1;
+inaltime_flange=17.5;
+inaltime_piesa_plastic=2;
+raza_surub_slip_ring=2.75;
+lungime_piesa_plastic=76;
+latime_piesa_plastic=47;
+inaltime_surub=4;
+raza_surub=1.25;
 latime_nema11=28.2;
 inaltime_nema11=31.5;
+
 module nema11()
 {
     difference() {
@@ -9,59 +22,58 @@ module nema11()
      translate([-14.1, -14.1, 0])
             color("gray") cube([latime_nema11, 28.2, inaltime_nema11]);
     // holes
-            translate([23 / 2, 23 / 2, inaltime_nema11 - 2]) cylinder (h = 4, r=1.25, center = true, $fn=100);
-            translate([23 / 2, -23 / 2, inaltime_nema11 - 2]) cylinder (h = 4, r=1.25, center = true, $fn=100);
-            translate([-23 / 2, 23 / 2, inaltime_nema11 - 2])  cylinder (h = 4, r=1.25, center = true, $fn=100);
-            translate([-23 / 2, -23 / 2, inaltime_nema11 - 2]) cylinder (h = 4, r=1.25, center = true, $fn=100);
+            translate([23 / 2, 23 / 2, inaltime_nema11 - 2]) cylinder (inaltime_surub, raza_surub, center = true, $fn=100);
+            translate([23 / 2, -23 / 2, inaltime_nema11 - 2]) cylinder (inaltime_surub, raza_surub, center = true, $fn=100);
+            translate([-23 / 2, 23 / 2, inaltime_nema11 - 2])  cylinder (inaltime_surub, raza_surub, center = true, $fn=100);
+            translate([-23 / 2, -23 / 2, inaltime_nema11 - 2]) cylinder (inaltime_surub, raza_surub, center = true, $fn=100);
     }
     translate([0, 0, inaltime_nema11]) color("yellow")cylinder (h = 2, r = 11, $fn = inaltime_nema11 - 2);
         // shaft
     translate([0, 0, inaltime_nema11]) cylinder(h = 20, r = 2.5, $fn = 30);
 }
 //---------------------------------------------------
-lungime_piesa_plastic=76;
-latime_piesa_plastic=47;
+
 module piesa_plastic()
 {
     difference(){
         color("fuchsia") 
         union () {
-            cube([lungime_piesa_plastic, latime_piesa_plastic, 2]);
+            cube([lungime_piesa_plastic, latime_piesa_plastic, inaltime_piesa_plastic]);
         // margins
-            translate ([0, 0, -4]) cube([lungime_piesa_plastic, 2, 4]);
-            translate ([0, 45, -4]) cube([lungime_piesa_plastic, 2, 4]);
+            translate ([0, 0, -4]) cube([lungime_piesa_plastic, inaltime_piesa_plastic, 4]);
+            translate ([0, 45, -4]) cube([lungime_piesa_plastic, inaltime_piesa_plastic, 4]);
         }
         // motor screw holes
-        translate([11.5, latime_piesa_plastic/2 - 11.5, -1]) cylinder (h = 4, r = 1.25, $fn=10);
-        translate([11.5, latime_piesa_plastic/2 + 11.5, -1]) cylinder (h = 4, r = 1.25, $fn=10);
+        translate([11.5, latime_piesa_plastic/2 - 11.5, -1]) cylinder (inaltime_surub, raza_surub, $fn=10);
+        translate([11.5, latime_piesa_plastic/2 + 11.5, -1]) cylinder (inaltime_surub, raza_surub, $fn=10);
         
         // motor hole
-        translate([0, latime_piesa_plastic/2, -1]) cylinder (h = 4, r = 11, $fn=100);
+        translate([0, latime_piesa_plastic/2, -1]) cylinder (inaltime_surub, raza_motor_hole, $fn=100);
         // slip ring screw holes
-            translate ([21 + 2 + 22, latime_piesa_plastic/2, -1] + [17.5 * sin(30), 17.5 * cos(30), 0]) cylinder (h = 4, r = 2.75);
-            translate ([21 + 2 + 22, latime_piesa_plastic/2, -1] + [17.5 * sin(150), 17.5 * cos(150), 0]) cylinder (h = 4, r = 2.75);
-            translate ([21 + 2 + 22, latime_piesa_plastic/2, -1] + [17.5 * sin(270), 17.5 * cos(270), 0]) cylinder (h = 4, r = 2.75);
+            translate ([21 + 2 + 22, latime_piesa_plastic/2, -1] + [inaltime_flange * sin(30), inaltime_flange * cos(30), 0]) cylinder (inaltime_surub, raza_surub_slip_ring);
+            translate ([21 + 2 + 22, latime_piesa_plastic/2, -1] + [inaltime_flange * sin(150), inaltime_flange * cos(150), 0]) cylinder (inaltime_surub, raza_surub_slip_ring);
+            translate ([21 + 2 + 22, latime_piesa_plastic/2, -1] + [inaltime_flange * sin(270), inaltime_flange * cos(270), 0]) cylinder (inaltime_surub, raza_surub_slip_ring);
 
         // slip ring hole
-        translate ([21 + 2 + 22, latime_piesa_plastic/2, -1]) cylinder (h = 4, r = 11);
+        translate ([21 + 2 + 22, latime_piesa_plastic/2, -1]) cylinder (inaltime_surub, raza_motor_hole);
         // IR hole
         translate([73 - 4.5, latime_piesa_plastic/2 - 6, 0]) cube ([9, 22 - 5, 5]);
         // ir screw hole
-        translate([72, latime_piesa_plastic/2 -9, -1]) cylinder (h = 4, r = 1.25, $fn = 10);
+        translate([72, latime_piesa_plastic/2 -9, -1]) cylinder (inaltime_surub, raza_surub, $fn = 10);
     }
 }
 //---------------------------------------------------
 module slip_ring()
 {
-    cylinder(h = 16.5, r = 11, $fn = 100);
+    cylinder(inaltime_flange, raza_motor_hole, $fn = 100);
         // flange
     translate([0, 0, 17]) {
         difference(){
             cylinder(h = 2, r = 22, $fn = 100);
             // holes
-            translate ([17.5 * sin(30), 17.5 * cos(30), -1]) cylinder (h = 4, r = 2.75);
-            translate ([17.5 * sin(150), 17.5 * cos(150), -1]) cylinder (h = 4, r = 2.75);
-            translate ([17.5 * sin(270), 17.5 * cos(270), -1]) cylinder (h = 4, r = 2.75);
+            translate ([inaltime_flange * sin(30), inaltime_flange * cos(30), -1]) cylinder (inaltime_surub, raza_surub_slip_ring);
+            translate ([inaltime_flange * sin(150), inaltime_flange * cos(150), -1]) cylinder (inaltime_surub, raza_surub_slip_ring);
+            translate ([inaltime_flange * sin(270), inaltime_flange * cos(270), -1]) cylinder (inaltime_surub, raza_surub_slip_ring);
         }
     }
     // rotor
@@ -89,11 +101,11 @@ module roata_dintata()
 {
     union()
     {
-        color("red")cylinder (h=1, r=12.75, $fn=30);
+        color("red")cylinder (inaltime_roata_dintata, raza_roata_dintata, $fn=30);
         translate([0, 0, 1])
-        color("white")cylinder (h=7.2, r=11.65, $fn=30);
+        color("white")cylinder (inaltime_mijloc_roata_dintara, raza_mijloc_roata_dintata, $fn=30);
         translate([0, 0, 8])
-        color("red")cylinder (h=1, r=12.75, $fn=30);
+        color("red")cylinder (inaltime_roata_dintata, raza_roata_dintata, $fn=30);
     }
 }
 //----------------------------------------------------
@@ -102,11 +114,11 @@ module roata_dintata2()
     union()
     {
         
-        color("red")cylinder (h=1, r=12.75, $fn=30);
+        color("red")cylinder (inaltime_roata_dintata, raza_roata_dintata, $fn=30);
         translate([0, 0, 1])
-        color("white")cylinder (h=7.2, r=11.65, $fn=30);
+        color("white")cylinder (inaltime_mijloc_roata_dintara, raza_mijloc_roata_dintata, $fn=30);
         translate([0, 0, 8])
-        color("red")cylinder (h=1, r=12.75, $fn=30);
+        color("red")cylinder (inaltime_roata_dintata, raza_roata_dintata, $fn=30);
         translate([0, 0, 15])
         color("blue")cube([12, 12, 11],true);
     }
