@@ -71,7 +71,7 @@ module slip_ring()
 {
     cylinder(h=inaltime_flange, r=raza_baza_slip_ring, $fn = 100);
         // flange
-    translate([0, 0, 17]) {
+    translate([-10, 0, 17]) {
         difference(){
             cylinder(h = 2, r = raza_slip_ring, $fn = 100);
             // holes
